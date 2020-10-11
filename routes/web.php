@@ -26,7 +26,7 @@ Route::group(['middleware' => ['auth']], function () {
     // KUNDEOPGAVER PREFIX
     Route::prefix('tools/kundeopgaver')->group(function () {
         
-        Route::get('/', [KnowhowController::class, 'kundeopgaver'])->name('kundeopgaver.index')
+        Route::get('/', [KnowhowController::class, 'kundeopgaver'])->name('kundeopgaver.index');
         Route::post('/ny', [KnowhowController::class, 'kundeopgaverPost'])->name('kundeopgaver.post');
         Route::get('edit/{id}', [KnowhowController::class, 'kundeopgaver_edit'])->name('kundeopgaver.edit');
         Route::post('edit/{id}/updateKundeopgave', [KnowhowController::class, 'kundeopgaverUpdate'])->name('kundeopgaver.update');
