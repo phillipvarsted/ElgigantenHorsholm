@@ -31,25 +31,25 @@ class Kernel extends ConsoleKernel
         // $schedule->command('add:knowhowtodos')->dailyAt('08:00');
         // $schedule->command('remove:knowhowtodosoverdue')->dailyAt('21:00');
 
-        $todos = DB::table('recurring_todos')->get();
+        // $todos = DB::table('recurring_todos')->get();
 
-        foreach($todos as $td)
-        {
-            $schedule->call(function()  use($td){
+        // foreach($todos as $td)
+        // {
+        //     $schedule->call(function()  use($td){
                 
-                $todo = new Todo;
-                $todo->todo = $td->todo;
-                $todo->due_date = Carbon::now()->format('Y-m-d') . ' 19:30:00';
-                $todo->department_id = $td->department_id;
-                $todo->completed = 0;
+        //         $todo = new Todo;
+        //         $todo->todo = $td->todo;
+        //         $todo->due_date = Carbon::now()->format('Y-m-d') . ' 19:30:00';
+        //         $todo->department_id = $td->department_id;
+        //         $todo->completed = 0;
                 
-                $todo->save();
+        //         $todo->save();
                 
-            })->days($td->frequency_weekdays)->at($td->frequency_time);
-        }
+        //     })->days($td->frequency_weekdays)->at($td->frequency_time);
+        // }
 
-        $schedule->command('remove:knowhowtodosoverdue')->dailyAt('19:30');
-        $schedule->command('set:todosclosed')->dailyAt('19:30');
+        // $schedule->command('remove:knowhowtodosoverdue')->dailyAt('19:30');
+        // $schedule->command('set:todosclosed')->dailyAt('19:30');
     }
 
     /**
